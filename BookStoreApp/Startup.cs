@@ -27,7 +27,7 @@ namespace BookStoreApp
                 app.UseDeveloperExceptionPage();
             }
 
-
+            app.UseStaticFiles(); 
 
             app.UseRouting();
 

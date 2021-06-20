@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/css/Site.css" rel="stylesheet" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body class="container">
+    <h1 class="h1 ba">Welcome to My First BookStore Application</h1>
+    <h2>@DateTime.Now.ToString("dd-mm-yyyy")</h2>
+
+    <p>sum = @(51+56)</p>
+
+    @{
+        int a = 10, b = 50;
+        int c = a + b;
+    }
+    <h4>Sume  of 10 and 50 is @c</h4>
+
+    <img src="~/images/aruba.png" class="logo img-thumbnail" />
+    <button class="btn-primary">Click Me</button>
+</body>
+<script src="~/lib/jquery/jquery.js"></script>
+</html>
+
+<script>
+    $(document).ready(function () {
+        alert("Page Loaded");
+    })
+</script>
