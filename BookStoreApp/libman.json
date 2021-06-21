@@ -6,10 +6,12 @@
       "library": "jquery@3.6.0",
       "destination": "wwwroot/lib/jquery/"
     }
-  ,
+
+,
 {
-  "library": "twitter-bootstrap@5.0.1",
-  "destination": "wwwroot/lib/twitter-bootstrap/"
+  "provider": "filesystem",
+  "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\css",
+  "destination": "wwwroot/lib/css/"
 }
 ]
 }
