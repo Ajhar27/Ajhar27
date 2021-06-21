@@ -10,8 +10,20 @@
 ,
 {
   "provider": "filesystem",
-  "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\css",
-  "destination": "wwwroot/lib/css/"
+  "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\js\\",
+  "destination": "wwwroot/lib/css/",
+  "files": [
+    "bootstrap.bundle.min.js"
+  ]
+}
+,
+{
+  "provider": "filesystem",
+  "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\css\\",
+  "destination": "wwwroot/lib/css/",
+  "files": [
+    "bootstrap.min.css"
+  ]
 }
 ]
 }
