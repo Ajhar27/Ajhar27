@@ -15,5 +15,8 @@ namespace BookStoreApp.Models
 
         public string property { get; set; }
         public string image { get; set; }
+        public string category { get; set; }
+        public string Language { get; set; }
+        public int totalpage { get; set; }
     }
 }
