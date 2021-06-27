@@ -2,22 +2,35 @@
 
 <div class="container">
     <h2 class="display-4">Add New Book</h2>
-    <form method="post">
-        <div class="form-group mb-3">
-            <label asp-for="Title"></label>
-            <input asp-for="Title" class="form-control" />
+    <hr />
+    @if (ViewBag.IsDone)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hey Congratulations....!!!</strong> You should Added Book Successfully 
+            Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.BookId">here</a> to see details
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <div class="form-group mb-3">
-            <label asp-for="Author"></label>
-            <input asp-for="Author" class="form-control" />
-        </div>
-        <div class="form-group mb-3">
-            <label asp-for="property"></label>
-            <textarea class="form-control" asp-for="property"></textarea>
-        </div>
+    }
+        <form method="post">
+            <div class="form-group mb-3">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Author"></label>
+                <input asp-for="Author" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="property"></label>
+                <textarea class="form-control" asp-for="property"></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="totalpage"></label>
+                <input class="form-control" asp-for="totalpage" />
+            </div>
 
-        <div class="form-group mb-3">
-            <input type="submit" value="Add Book" class="btn btn-primary" />
-        </div>
-    </form>
-</div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Add Book" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>

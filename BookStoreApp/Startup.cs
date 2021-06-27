@@ -1,4 +1,5 @@
 using BookStoreApp.Data;
+using BookStoreApp.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +23,8 @@ namespace BookStoreApp
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddScoped<BookRepository, BookRepository>();
 #endif
         }
 
