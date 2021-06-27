@@ -8,12 +8,10 @@ namespace BookStoreApp.Data
 {
     public class BookStoreContext : DbContext
     {
-        public BookStoreContext(DbContextOptions<BookStoreContext> options)
-            : base(options)
+        public BookStoreContext(DbContextOptions<BookStoreContext> options) : base(options)
         {
 
         }
-
         public DbSet<Books> Books { get; set; }
 
         //we create connectionStr in Startup.cs file so no need to create here

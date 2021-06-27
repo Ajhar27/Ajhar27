@@ -1,5 +1,6 @@
 ﻿using BookStoreApp.Data;
 using BookStoreApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,31 +18,68 @@ namespace BookStoreApp.Repository
         {
             _context = context;
         }
-        public int AddNewBook(BookModel model)
+        public async Task<int> AddNewBook(BookModel model)
         {
             var newBook = new Books()
             {
                 Author = model.Author,
                 CreateOn = DateTime.UtcNow,
                 Title = model.Title,
-                Property = model.property,
-                Totalpage = model.totalpage,
+                Category = model.Category,
+                Language = model.Language,
+                Property = model.Property,
+                Totalpage = model.Totalpage,
                 UpdateOn = DateTime.UtcNow
             };
 
-            _context.Books.Add(newBook);
-            _context.SaveChanges();
+            await _context.Books.AddAsync(newBook);
+            await _context.SaveChangesAsync();
 
             return newBook.Id;
         }
-        public List<BookModel> GetAllBooks()
+        public async Task<List<BookModel>> GetAllBooks()
         {
-            return DataSaurce();
+            var books = new List<BookModel>();
+            var allbooks = await _context.Books.ToListAsync();
+            if(allbooks?.Any() == true)
+            {
+                foreach(var book in allbooks)
+                {
+                    books.Add(new BookModel()
+                    {
+                        Author = book.Author,
+                        Category = book.Category,
+                        Id = book.Id,
+                        Property = book.Property,
+                        Language = book.Language,
+                        Title = book.Title,
+                        Totalpage = book.Totalpage
+                    });
+                }
+            }
+            return books;
         }
 
-        public BookModel GetBookById(int id)
+        public async Task<BookModel> GetBookById(int id)
         {
-            return DataSaurce().Where(x => x.Id == id).FirstOrDefault();
+            var book = await _context.Books.FindAsync(id);
+            if(book != null)
+            {
+                var bookdetails = new BookModel()
+                {
+                    Author = book.Author,
+                    Category = book.Category,
+                    Id = book.Id,
+                    Language = book.Language,
+                    Property = book.Property,
+                    Title = book.Title,
+                    Totalpage = book.Totalpage
+                };
+                return bookdetails;
+            }
+            return null;
+            
+            //return DataSaurce().Where(x => x.Id == id).FirstOrDefault();
         }
 
         public List<BookModel>SearchBook(string title,string author)
@@ -53,13 +91,8 @@ namespace BookStoreApp.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel(){Id=1, Title="MVC", Author="Ajhar",property="This book is about MVC",category="MVC Programming",Language="English",totalpage=560},
-                new BookModel(){Id=2, Title="C#", Author="Madhav" ,property="This book is about C#",category="C# Logic",Language="German",totalpage=1562},
-                new BookModel(){Id=3, Title="Java", Author="Anshul",property="This book is about Java",category="Core java concept",Language="Spanish",totalpage=1860},
-                new BookModel(){Id=4, Title="Dot Net Core", Author="Rajeev",property="This book is about Dot net",category="Foundation of Dot Net",Language="Bangali",totalpage=960},
-                new BookModel(){Id=5, Title="F#", Author="Kamal",property="This book is about F#",category="Basics Of F#",Language="Hindi",totalpage=260},
-                new BookModel(){Id=6, Title="Python", Author="Kunal",property="This book is about Python",category="New Learning of Python",Language="Urdu",totalpage=160},
-                
+                new BookModel(){Id=1, Title="MVC", Author="Ajhar",Property="This book is about MVC",Category="MVC Programming",Language="English",Totalpage=560},
+               
             };
         }
     }

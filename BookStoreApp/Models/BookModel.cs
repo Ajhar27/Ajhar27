@@ -13,10 +13,10 @@ namespace BookStoreApp.Models
 
         public string Author { get; set; }
 
-        public string property { get; set; }
-        public string image { get; set; }
-        public string category { get; set; }
+        public string Property { get; set; }
+        
+        public string Category { get; set; }
         public string Language { get; set; }
-        public int totalpage { get; set; }
+        public int Totalpage { get; set; }
     }
 }
