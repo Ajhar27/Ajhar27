@@ -28,7 +28,7 @@ namespace BookStoreApp.Repository
                 Category = model.Category,
                 Language = model.Language,
                 Property = model.Property,
-                Totalpage = model.Totalpage,
+                Totalpage = model.Totalpage.HasValue ? model.Totalpage.Value : 0,
                 UpdateOn = DateTime.UtcNow
             };
 
