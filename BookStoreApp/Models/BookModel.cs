@@ -18,12 +18,13 @@ namespace BookStoreApp.Models
         public string Author { get; set; }
 
         [StringLength(30,MinimumLength = 5), Display(Name = "Description")]
+        [Required]
         public string Property { get; set; }
 
         [Required]
         public string Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Choose any Language")]
         public string Language { get; set; }
 
         [Display(Name ="Total Pages")]
