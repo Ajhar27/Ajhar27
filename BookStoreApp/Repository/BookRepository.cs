@@ -26,7 +26,7 @@ namespace BookStoreApp.Repository
                 CreateOn = DateTime.UtcNow,
                 Title = model.Title,
                 Category = model.Category,
-                Language = model.Language,
+                LanguageId = model.LanguageId,
                 Property = model.Property,
                 Totalpage = model.Totalpage.HasValue ? model.Totalpage.Value : 0,
                 UpdateOn = DateTime.UtcNow
@@ -51,7 +51,7 @@ namespace BookStoreApp.Repository
                         Category = book.Category,
                         Id = book.Id,
                         Property = book.Property,
-                        Language = book.Language,
+                        LanguageId = book.LanguageId,
                         Title = book.Title,
                         Totalpage = book.Totalpage
                     });
@@ -70,7 +70,7 @@ namespace BookStoreApp.Repository
                     Author = book.Author,
                     Category = book.Category,
                     Id = book.Id,
-                    Language = book.Language,
+                    LanguageId = book.LanguageId,
                     Property = book.Property,
                     Title = book.Title,
                     Totalpage = book.Totalpage
@@ -84,16 +84,8 @@ namespace BookStoreApp.Repository
 
         public List<BookModel>SearchBook(string title,string author)
         {
-            return DataSaurce().Where(x => x.Title.Contains(title)|| x.Author.Contains(author)).ToList(); 
+            return null;
         }
 
-        private List<BookModel> DataSaurce()
-        {
-            return new List<BookModel>()
-            {
-                new BookModel(){Id=1, Title="MVC", Author="Ajhar",Property="This book is about MVC",Category="MVC Programming",Language="English",Totalpage=560},
-               
-            };
-        }
     }
 }

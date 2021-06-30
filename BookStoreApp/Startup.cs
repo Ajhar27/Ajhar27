@@ -25,6 +25,7 @@ namespace BookStoreApp
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddScoped<BookRepository, BookRepository>();
+            services.AddScoped<LanguageRepository, LanguageRepository>();
 #endif
         }
 

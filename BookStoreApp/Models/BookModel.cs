@@ -25,7 +25,7 @@ namespace BookStoreApp.Models
         public string Category { get; set; }
 
         [Required(ErrorMessage = "Please Choose any Language")]
-        public string Language { get; set; }
+        public int LanguageId { get; set; }
 
         [Display(Name ="Total Pages")]
         public int? Totalpage { get; set; }

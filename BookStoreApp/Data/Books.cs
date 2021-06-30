@@ -16,11 +16,12 @@ namespace BookStoreApp.Data
         public string Property { get; set; }
         
         public string Category { get; set; }
-        public string Language { get; set; }
+        public int LanguageId { get; set; }
         public int Totalpage { get; set; }
 
         public DateTime? CreateOn { get; set; }
         public DateTime? UpdateOn { get; set; }
+        public Language Language { get; set; }
 
     }
 }
