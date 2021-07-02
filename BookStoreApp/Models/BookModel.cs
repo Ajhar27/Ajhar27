@@ -14,10 +14,10 @@ namespace BookStoreApp.Models
         [Required(ErrorMessage = "Please Enter the Title of Book")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Please Enter the Author of Book")]
+        [Required(ErrorMessage = "Please Enter the Author of Book"), StringLength(50, MinimumLength = 5)]
         public string Author { get; set; }
 
-        [StringLength(100,MinimumLength = 5), Display(Name = "Description")]
+        [StringLength(100,MinimumLength = 5), Display(Name = "Book Description")]
         [Required]
         public string Property { get; set; }
 
