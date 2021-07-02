@@ -17,6 +17,8 @@ namespace BookStoreApp.Data
         
         public string Category { get; set; }
         public int LanguageId { get; set; }
+
+        
         public int Totalpage { get; set; }
 
         public DateTime? CreateOn { get; set; }

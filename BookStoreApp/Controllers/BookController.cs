@@ -39,7 +39,7 @@ namespace BookStoreApp.Controllers
             return _bookRepository.SearchBook(bookName, authorName);
         }
 
-        public async Task<ViewResult> AddBook(bool IsDone = false, int bookId = 0)
+        public async Task<ViewResult> AddNewBook(bool IsDone = false, int bookId = 0)
         {
             var model = new BookModel();
 
@@ -49,7 +49,7 @@ namespace BookStoreApp.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddBook(BookModel bookModel)
+        public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace BookStoreApp.Controllers
 
                 if (id > 0)
                 {
-                    return RedirectToAction(nameof(AddBook), new { IsDone = true, bookId = id });
+                    return RedirectToAction(nameof(AddNewBook), new { IsDone = true, bookId = id });
                 }
             }
 

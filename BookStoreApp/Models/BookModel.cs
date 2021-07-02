@@ -17,7 +17,7 @@ namespace BookStoreApp.Models
         [Required(ErrorMessage = "Please Enter the Author of Book")]
         public string Author { get; set; }
 
-        [StringLength(30,MinimumLength = 5), Display(Name = "Description")]
+        [StringLength(100,MinimumLength = 5), Display(Name = "Description")]
         [Required]
         public string Property { get; set; }
 
@@ -26,6 +26,8 @@ namespace BookStoreApp.Models
 
         [Required(ErrorMessage = "Please Choose any Language")]
         public int LanguageId { get; set; }
+
+        public string Language { get; set; }
 
         [Display(Name ="Total Pages")]
         public int? Totalpage { get; set; }
