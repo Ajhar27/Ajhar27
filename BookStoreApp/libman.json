@@ -5,25 +5,34 @@
     {
       "library": "jquery@3.6.0",
       "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\js\\",
+      "destination": "wwwroot/lib/css/",
+      "files": [
+        "bootstrap.bundle.min.js"
+      ]
+    },
+    {
+      "provider": "filesystem",
+      "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\css\\",
+      "destination": "wwwroot/lib/css/",
+      "files": [
+        "bootstrap.min.css"
+      ]
+    },
+    {
+      "library": "jquery-validate@1.19.3",
+      "destination": "wwwroot/jquery-validate/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.12",
+      "destination": "wwwroot/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/jquery-ajax-unobtrusive/"
     }
-
-,
-{
-  "provider": "filesystem",
-  "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\js\\",
-  "destination": "wwwroot/lib/css/",
-  "files": [
-    "bootstrap.bundle.min.js"
   ]
-}
-,
-{
-  "provider": "filesystem",
-  "library": "C:\\Users\\Smart\\source\\repos\\BookStoreApp\\BookStoreApp\\wwwroot\\css\\",
-  "destination": "wwwroot/lib/css/",
-  "files": [
-    "bootstrap.min.css"
-  ]
-}
-]
 }

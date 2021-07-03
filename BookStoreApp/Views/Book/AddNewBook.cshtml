@@ -13,7 +13,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             }
-            <form method="post" >
+            @*Loader for waiting on submit*@
+            @*<div class="text-center">
+            <div class="spinner-border" role="status" id="MyLoader" style="display:none">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+            <form method="post" data-ajax="true" dat-ajax-success="mySuccess" data-ajax-failure="myFailure"
+              data-ajax-complete="myComplete" data-ajax-loading="#MyLoader" asp-action="AddNewBook" asp-controller="Book">
+            <div class="form-group mb-3">*@
+
+            <form method="post" asp-action="AddNewBook" asp-controller="Book">
                 <div class="form-group mb-3">
                     <label asp-for="Title"></label>
                     <input asp-for="Title" class="form-control" />
@@ -36,7 +46,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label asp-for="LanguageId"></label>
-                    <select asp-for="LanguageId" class="form-control" asp-items="ViewBag.Language" >
+                    <select asp-for="LanguageId" class="form-control" asp-items="ViewBag.Language">
                     </select>
                     <span asp-validation-for="LanguageId" class="text-danger"></span>
                 </div>
@@ -53,3 +63,19 @@
         </div>
     </div>
 </div>
+
+@*@section scripts{ 
+<script>
+    function myComplete() {
+        alert("I am Complete");
+    }
+
+    function mySuccess() {
+        alert("I am Success");
+    }
+
+    function myFailure() {
+        alert("I am Failure");
+    }
+</script>
+}*@
