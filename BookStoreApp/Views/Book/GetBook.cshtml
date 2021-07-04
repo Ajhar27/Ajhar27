@@ -8,20 +8,20 @@
         <div class="col-md-6">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    @for (int i = 0; i < Model.Gallary.Count(); i++)
+                    {
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i==0 ?"active" : "")"></button>
+                    }
+ 
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="~/images/Book1.jpg" class="d-block w-100 img" alt="...">
+                    @for (int i = 0; i < Model.Gallary.Count(); i++)
+                    {
+                    <div class="@(i==0 ? "carousel-item active" : "carousel-item")">
+                        <img src="@Model.Gallary[i].URL" class="d-block w-100 img" alt="@Model.Gallary[i].Name">
                     </div>
-                    <div class="carousel-item">
-                        <img src="~/images/Book2.jpg" class="d-block w-100 img" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="~/images/Book3.jpg" class="d-block w-100 img" alt="...">
-                    </div>
+                    }
+     
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

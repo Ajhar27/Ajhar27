@@ -4,14 +4,16 @@ using BookStoreApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookStoreApp.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210704183405_AddNewFK")]
+    partial class AddNewFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +31,9 @@ namespace BookStoreApp.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("BooksId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -37,7 +42,7 @@ namespace BookStoreApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("BooksId");
 
                     b.ToTable("BookGallary");
                 });
@@ -103,13 +108,11 @@ namespace BookStoreApp.Migrations
 
             modelBuilder.Entity("BookStoreApp.Data.BookGallary", b =>
                 {
-                    b.HasOne("BookStoreApp.Data.Books", "Book")
+                    b.HasOne("BookStoreApp.Data.Books", "Books")
                         .WithMany("BookGallary")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BooksId");
 
-                    b.Navigation("Book");
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("BookStoreApp.Data.Books", b =>

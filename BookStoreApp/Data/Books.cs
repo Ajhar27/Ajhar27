@@ -14,16 +14,17 @@ namespace BookStoreApp.Data
         public string Author { get; set; }
 
         public string Property { get; set; }
-        
         public string Category { get; set; }
         public int LanguageId { get; set; }
-
-        
         public int Totalpage { get; set; }
+
+        public string CoverImageURL { get; set; }
 
         public DateTime? CreateOn { get; set; }
         public DateTime? UpdateOn { get; set; }
         public Language Language { get; set; }
+
+        public ICollection<BookGallary> BookGallary { get; set; }
 
     }
 }

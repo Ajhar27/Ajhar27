@@ -4,43 +4,22 @@ using BookStoreApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookStoreApp.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210704172651_AddNewColumnforImgURL")]
+    partial class AddNewColumnforImgURL
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("BookStoreApp.Data.BookGallary", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("URL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("BookGallary");
-                });
 
             modelBuilder.Entity("BookStoreApp.Data.Books", b =>
                 {
@@ -101,17 +80,6 @@ namespace BookStoreApp.Migrations
                     b.ToTable("Language");
                 });
 
-            modelBuilder.Entity("BookStoreApp.Data.BookGallary", b =>
-                {
-                    b.HasOne("BookStoreApp.Data.Books", "Book")
-                        .WithMany("BookGallary")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-                });
-
             modelBuilder.Entity("BookStoreApp.Data.Books", b =>
                 {
                     b.HasOne("BookStoreApp.Data.Language", "Language")
@@ -121,11 +89,6 @@ namespace BookStoreApp.Migrations
                         .IsRequired();
 
                     b.Navigation("Language");
-                });
-
-            modelBuilder.Entity("BookStoreApp.Data.Books", b =>
-                {
-                    b.Navigation("BookGallary");
                 });
 
             modelBuilder.Entity("BookStoreApp.Data.Language", b =>
