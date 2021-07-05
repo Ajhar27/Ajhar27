@@ -49,31 +49,63 @@ namespace BookStoreApp.Repository
 
             return newBook.Id;
         }
+        //public async Task<List<BookModel>> GetAllBooks()
+        //{
+        //    var books = new List<BookModel>();
+        //    var allbooks = await _context.Books.ToListAsync();
+        //    if(allbooks?.Any() == true)
+        //    {
+        //        foreach(var book in allbooks)
+        //        {
+        //            books.Add(new BookModel()
+        //            {
+        //                Author = book.Author,
+        //                Category = book.Category,
+        //                Id = book.Id,
+        //                Property = book.Property,
+        //                LanguageId = book.LanguageId,
+        //                //Language = book.Language.Name,
+        //                Title = book.Title,
+        //                Totalpage = book.Totalpage,
+        //                CoverImageURL = book.CoverImageURL
+        //            });
+        //        }
+        //    }
+        //    return books;
+        //}
         public async Task<List<BookModel>> GetAllBooks()
         {
-            var books = new List<BookModel>();
-            var allbooks = await _context.Books.ToListAsync();
-            if(allbooks?.Any() == true)
+            
+            return await _context.Books.Select(book => new BookModel()
             {
-                foreach(var book in allbooks)
-                {
-                    books.Add(new BookModel()
-                    {
-                        Author = book.Author,
-                        Category = book.Category,
-                        Id = book.Id,
-                        Property = book.Property,
-                        LanguageId = book.LanguageId,
-                        //Language = book.Language.Name,
-                        Title = book.Title,
-                        Totalpage = book.Totalpage,
-                        CoverImageURL = book.CoverImageURL
-                    });
-                }
-            }
-            return books;
+                Author = book.Author,
+                Category = book.Category,
+                Id = book.Id,
+                Property = book.Property,
+                LanguageId = book.LanguageId,
+                Language = book.Language.Name,
+                Title = book.Title,
+                Totalpage = book.Totalpage,
+                CoverImageURL = book.CoverImageURL
+            }).ToListAsync();  
         }
 
+        public async Task<List<BookModel>> GetTopBooksAsync()
+        {
+
+            return await _context.Books.Select(book => new BookModel()
+            {
+                Author = book.Author,
+                Category = book.Category,
+                Id = book.Id,
+                Property = book.Property,
+                LanguageId = book.LanguageId,
+                Language = book.Language.Name,
+                Title = book.Title,
+                Totalpage = book.Totalpage,
+                CoverImageURL = book.CoverImageURL
+            }).Take(5).ToListAsync();
+        }
         public async Task<BookModel> GetBookById(int id)
         {
             return await _context.Books.Where(x => x.Id == id)
