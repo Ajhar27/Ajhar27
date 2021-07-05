@@ -41,6 +41,12 @@ namespace BookStoreApp.Models
 
         public string CoverImageURL { get; set; }
 
+        [Display(Name = "Upload your book in PDF formate")]
+        [Required(ErrorMessage = "Please Choose any PDF of book")]
+        public IFormFile BookPdf { get; set; }
+
+        public string PDFURL { get; set; } 
+
         [Display(Name = "Choose cover photo of the book")]
         [Required(ErrorMessage = "Please Choose any photo of book")]
         public IFormFileCollection GallaryImages { get; set; }

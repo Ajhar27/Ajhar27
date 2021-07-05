@@ -19,6 +19,7 @@ namespace BookStoreApp.Data
         public int Totalpage { get; set; }
 
         public string CoverImageURL { get; set; }
+        public string PDFURL { get; set; }
 
         public DateTime? CreateOn { get; set; }
         public DateTime? UpdateOn { get; set; }

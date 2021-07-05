@@ -30,7 +30,8 @@ namespace BookStoreApp.Repository
                 Property = model.Property,
                 Totalpage = model.Totalpage.HasValue ? model.Totalpage.Value : 0,
                 UpdateOn = DateTime.UtcNow,
-                CoverImageURL = model.CoverImageURL
+                CoverImageURL = model.CoverImageURL,
+                PDFURL = model.PDFURL
             };
 
             newBook.BookGallary = new List<BookGallary>();
@@ -92,7 +93,8 @@ namespace BookStoreApp.Repository
                     Id = g.Id,
                     Name = g.Name,
                     URL = g.URL
-                }).ToList()
+                }).ToList(),
+                PDFURL = book.PDFURL
             }).FirstOrDefaultAsync();
         }
 

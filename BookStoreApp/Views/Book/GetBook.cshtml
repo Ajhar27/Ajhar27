@@ -12,16 +12,16 @@
                     {
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i==0 ?"active" : "")"></button>
                     }
- 
+
                 </div>
                 <div class="carousel-inner">
                     @for (int i = 0; i < Model.Gallary.Count(); i++)
                     {
-                    <div class="@(i==0 ? "carousel-item active" : "carousel-item")">
-                        <img src="@Model.Gallary[i].URL" class="d-block w-100 img" alt="@Model.Gallary[i].Name">
-                    </div>
+                        <div class="@(i==0 ? "carousel-item active" : "carousel-item")">
+                            <img src="@Model.Gallary[i].URL" class="d-block w-100 img" alt="@Model.Gallary[i].Name">
+                        </div>
                     }
-     
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,17 +54,32 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <button class="btn btn-outline-primary">
-                        Read More
-                    </button>
+                    <a class="btn btn-outline-primary" href="@Model.PDFURL" data-bs-toggle="modal" data-bs-target="#exampleModal">Read More</a>
                 </div>
             </div>
-            <hr/>
+            <hr />
             <ul class="list-group">
                 <li class="list-group-item"><span class=" point">Category -</span> @Model.Category </li>
                 <li class="list-group-item"><span class="point">Total Pages -</span>@Model.Totalpage</li>
                 <li class="list-group-item"><span class="point">Language -</span>@Model.Language </li>
             </ul>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog  modal-lg modal-dialog-centered modal-dialog-scrollable ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">@Model.Title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <embed src="@Model.PDFURL" class="w-100 model" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

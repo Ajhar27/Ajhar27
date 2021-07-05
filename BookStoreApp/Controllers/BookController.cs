@@ -79,8 +79,12 @@ namespace BookStoreApp.Controllers
                             URL = await UploadImage(folder, file)
                         };
                         bookModel.Gallary.Add(gallary);
-                    }
-                    
+                    }   
+                }
+                if (bookModel.BookPdf != null)
+                {
+                    string folder = "books/pdf/";
+                    bookModel.PDFURL = await UploadImage(folder, bookModel.BookPdf);
                 }
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
