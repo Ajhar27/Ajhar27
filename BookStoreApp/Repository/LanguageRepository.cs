@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreApp.Repository
 {
-    public class LanguageRepository
+    public class LanguageRepository : ILanguageRepository
     {
         private readonly BookStoreContext _context = null;
 
@@ -25,7 +25,7 @@ namespace BookStoreApp.Repository
                 Description = x.Description,
                 Name = x.Name
             }).ToListAsync();
-                
+
         }
     }
 }

@@ -15,18 +15,19 @@ namespace BookStoreApp.Controllers
 
     public class BookController : Controller
     {
-        private readonly BookRepository _bookRepository = null;
-        private readonly LanguageRepository _languageRepository = null;
+        private readonly IBookRepository _bookRepository = null;
+        private readonly ILanguageRepository _languageRepository = null;
         private readonly IWebHostEnvironment _webHostEnvironment = null;
 
-        public BookController(BookRepository bookRepository, 
-            LanguageRepository languageRepository,
+        public BookController(IBookRepository bookRepository, 
+            ILanguageRepository languageRepository,
             IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;
             _languageRepository = languageRepository;
             _webHostEnvironment = webHostEnvironment;
         }
+        [Route("AllBooks")]
         public async Task<ViewResult> GetAllBooksAsync()
         {
             var data = await _bookRepository.GetAllBooks();

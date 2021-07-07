@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace BookStoreApp.Repository
 {
 
-    
-    public class BookRepository
+
+    public class BookRepository : IBookRepository
     {
         private readonly BookStoreContext _context = null;
 
@@ -35,7 +35,7 @@ namespace BookStoreApp.Repository
             };
 
             newBook.BookGallary = new List<BookGallary>();
-            foreach(var file in model.Gallary)
+            foreach (var file in model.Gallary)
             {
                 newBook.BookGallary.Add(new BookGallary()
                 {
@@ -75,7 +75,7 @@ namespace BookStoreApp.Repository
         //}
         public async Task<List<BookModel>> GetAllBooks()
         {
-            
+
             return await _context.Books.Select(book => new BookModel()
             {
                 Author = book.Author,
@@ -87,7 +87,7 @@ namespace BookStoreApp.Repository
                 Title = book.Title,
                 Totalpage = book.Totalpage,
                 CoverImageURL = book.CoverImageURL
-            }).ToListAsync();  
+            }).ToListAsync();
         }
 
         public async Task<List<BookModel>> GetTopBooksAsync()
@@ -110,27 +110,27 @@ namespace BookStoreApp.Repository
         {
             return await _context.Books.Where(x => x.Id == id)
                 .Select(book => new BookModel()
-            {
-                Author = book.Author,
-                Category = book.Category,
-                Id = book.Id,
-                LanguageId = book.LanguageId,
-                Language = book.Language.Name,
-                Property = book.Property,
-                Title = book.Title,
-                Totalpage = book.Totalpage,
-                CoverImageURL = book.CoverImageURL,
-                Gallary = book.BookGallary.Select(g => new GallaryModel()
                 {
-                    Id = g.Id,
-                    Name = g.Name,
-                    URL = g.URL
-                }).ToList(),
-                PDFURL = book.PDFURL
-            }).FirstOrDefaultAsync();
+                    Author = book.Author,
+                    Category = book.Category,
+                    Id = book.Id,
+                    LanguageId = book.LanguageId,
+                    Language = book.Language.Name,
+                    Property = book.Property,
+                    Title = book.Title,
+                    Totalpage = book.Totalpage,
+                    CoverImageURL = book.CoverImageURL,
+                    Gallary = book.BookGallary.Select(g => new GallaryModel()
+                    {
+                        Id = g.Id,
+                        Name = g.Name,
+                        URL = g.URL
+                    }).ToList(),
+                    PDFURL = book.PDFURL
+                }).FirstOrDefaultAsync();
         }
 
-        public List<BookModel>SearchBook(string title,string author)
+        public List<BookModel> SearchBook(string title, string author)
         {
             return null;
         }
