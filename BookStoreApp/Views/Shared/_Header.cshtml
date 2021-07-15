@@ -1,9 +1,16 @@
-﻿@inject BookStoreApp.Repository.IBookRepository _bookRepo
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration _configuration
+@{ 
+    var NewBook = new NewBookAlertConfig();
+    _configuration.Bind("BookAlert", NewBook);
+}
+
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                @_bookRepo.GetAppName()
+                @_configuration["AppName"]
 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,4 +41,13 @@
             </div>
         </div>
     </nav>
+
+    @if (NewBook.DisplayAlert)
+    {
+        <div class="alert alert-info" role="alert">
+            @(NewBook.BookName)
+        </div>
+    }
+
+
 </header>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookStoreApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,21 @@ namespace BookStoreApp.Controllers
         }
         public ViewResult Index()
         {
-            var result = configuration["AppName"];
-            var Key1 = configuration["Info_Obj:Key1"];
-            var Key2 = configuration["Info_Obj:Key2:Key01"];
-            
-            return View();
+            var newBookAlert = new NewBookAlertConfig();
+            configuration.Bind("BookAlert",newBookAlert );
+
+            bool IsDisplay = newBookAlert.DisplayAlert;
+            string Book = newBookAlert.BookName;
+
+            //var NewBook = configuration.GetSection("BookAlert");
+            //var result = NewBook.GetValue<bool>("DisplayAlert");
+            //var AppName = NewBook.GetValue<string>("BookName");
+
+            ////var result = configuration["AppName"];
+            //var Key1 = configuration["Info_Obj:Key1"];
+            //var Key2 = configuration["Info_Obj:Key2:Key01"];
+
+             return View();
         }
 
         public ViewResult Aboutus()
